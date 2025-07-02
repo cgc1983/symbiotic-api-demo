@@ -61,8 +61,28 @@ public class DemoFixHand {
             
             // Wait for task completion
             logger.info("Waiting for task completion...");
-            Models.StatusTaskResponseData completedTask = Utils.waitForTaskCompletion(promptId, 30, 5000);
-            
+            Models.StatusTaskResponseData completedTask = Utils.waitForTaskCompletion(promptId, 130, 5000);
+
+            Models.HistoryResponse history_model = Utils.getTaskHistory("7");
+            if (history_model.code != 0) {
+                logger.error("Failed to get history, error message: {}", history_model.msg);
+                return;
+            }
+
+            for (var item : history_model.data.items) {
+                logger.info("History ID: {}", item.id);
+                for (var task : item.tasks) {
+                    logger.info("Task ID: {}", task.id);
+                    logger.info("Task status: {}", task.complete);
+                    logger.info("Task start time: {}", task.executionStart);
+                    logger.info("Task update time: {}", task.updateAt);
+                    logger.info("Task creation time: {}", task.createAt);
+                    for (var output : task.outPuts) {
+                        logger.info("Download link: {}{}", Config.S3_BUCKET_BASE_URL, output);
+                    }
+                }
+            }
+
             logger.info("Fix hand task completed successfully!");
             logger.info("Task ID: {}", completedTask.promptId);
             logger.info("Execution time: {} ms", completedTask.executionStart);

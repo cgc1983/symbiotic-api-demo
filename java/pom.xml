@@ -47,11 +47,11 @@
         </dependency>
         
         <!-- UUID Generation -->
-        <dependency>
-            <groupId>java.util</groupId>
-            <artifactId>java.util</artifactId>
-            <version>1.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>java.util</groupId>-->
+<!--            <artifactId>java.util</artifactId>-->
+<!--            <version>1.0</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
