@@ -1,0 +1,7 @@
+.idea
+__pycache__
+.venv
+folder-alias.json
+.vscode
+node_modules
+*.log
