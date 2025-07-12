@@ -59,14 +59,6 @@ python demo_inpainting.py
 # Outpainting demo
 python demo_outpainting.py
 
-# Make action pose demo
-python demo_make_action_pose.py
-
-# Fix hand demo
-python demo_fix_hand.py
-
-# Generate pose video demo
-python demo_generate_pose_video.py
 ```
 
 ## Configuration
@@ -100,9 +92,6 @@ Each demo demonstrates a specific API functionality:
 1. **File Upload** (`demo_upload_file.py`): Upload files to S3 using pre-signed URLs
 2. **Inpainting** (`demo_inpainting.py`): Fill masked areas in images with AI-generated content
 3. **Outpainting** (`demo_outpainting.py`): Extend images beyond their boundaries
-4. **Make Action Pose** (`demo_make_action_pose.py`): Generate character poses with masks
-5. **Fix Hand** (`demo_fix_hand.py`): Improve hand positioning in character images
-6. **Generate Pose Video** (`demo_generate_pose_video.py`): Create videos from character poses
 
 ## API Workflow
 
@@ -152,9 +141,6 @@ The demos interact with these API endpoints:
 - `GET /api/v1/image-signature`: Get S3 pre-signed upload URL
 - `POST /api/v1/inpainting`: Execute inpainting
 - `POST /api/v1/outpainting`: Execute outpainting
-- `POST /api/v1/make-action-pose`: Generate action poses
-- `POST /api/v1/fix-hand`: Fix hand positioning
-- `POST /api/v1/generate-pose-video`: Generate pose videos
 - `GET /api/v1/get-task-status`: Check task completion status
 - `GET /api/v1/get-task-history`: Retrieve task history
 

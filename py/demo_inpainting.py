@@ -30,10 +30,10 @@ def main():
     if prompt_model.code != 0:
         logger.error(f"Inpainting execution failed, error message: {prompt_model.msg}")
         return
-    prompt_id = prompt_model.data.promptId
+    workflow_id = prompt_model.data.workflow_id
 
     # Check status
-    get_status_req = GetTaskStatus(promptId=prompt_id)
+    get_status_req = GetTaskStatus(workflow_id=workflow_id)
     while True:
         status_model = make_authenticated_request(
             "GET", "/api/v1/get-task-status",
@@ -47,7 +47,7 @@ def main():
             time.sleep(5)
 
     # Get history
-    get_history_req = GetHistory(tool_id="4")
+    get_history_req = GetHistory(tool_id="4",page="1",page_size="10")
     response = make_authenticated_request(
         "GET", "/api/v1/get-task-history",
         params=get_history_req.model_dump()
@@ -64,10 +64,10 @@ def main():
         for task in tasks:
             logger.info(f"Task ID: {task.id}")
             logger.info(f"Task status: {task.complete}")
-            logger.info(f"Task start time: {task.executionStart}")
-            logger.info(f"Task update time: {task.updateAt}")
-            logger.info(f"Task creation time: {task.createAt}")
-            for output in task.outPuts:
+            logger.info(f"Task start time: {task.execution_start}")
+            logger.info(f"Task update time: {task.update_at}")
+            logger.info(f"Task creation time: {task.create_at}")
+            for output in task.out_puts:
                 download_url = f"{S3_BUCKET_BASE_URL}/{output}"
                 logger.info(f"Download link: {download_url}")
 

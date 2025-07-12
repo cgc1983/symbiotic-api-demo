@@ -35,7 +35,7 @@ def main():
     
     # 2. Get signature URL
     signature = response_model.data.signature
-    download_url = response_model.data.downloadUrl
+    download_url = response_model.data.download_url
     
     logger.info(f"Obtained signature URL: {signature}")
     logger.info(f"File extension: {extension}")
