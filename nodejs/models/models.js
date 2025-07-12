@@ -1,40 +1,19 @@
 // Request Models
 class GetTaskStatus {
-  constructor(promptId) {
-    this.promptId = promptId;
+  constructor(workflow_id) {
+    this.workflow_id = workflow_id;
   }
 }
 
 class GetHistory {
   constructor(tool_id) {
     this.tool_id = tool_id;
+    this.page = this.page;
+    this.page_size = this.page_size
   }
 }
 
-class CharacterDesignStep1 {
-  constructor(character_name, character_detail, lora_type) {
-    this.character_name = character_name;
-    this.character_detail = character_detail;
-    this.lora_type = lora_type;
-  }
-}
 
-class CharacterDesignStep2 {
-  constructor(prompt_text, character_image_name, lora_type) {
-    this.prompt_text = prompt_text;
-    this.character_image_name = character_image_name;
-    this.lora_type = lora_type;
-  }
-}
-
-class CharacterDesignStep3 {
-  constructor(prompt_text, character_image_name, video_name, lora_type) {
-    this.prompt_text = prompt_text;
-    this.character_image_name = character_image_name;
-    this.video_name = video_name;
-    this.lora_type = lora_type;
-  }
-}
 
 class Inpainting {
   constructor(description, mask_name) {
@@ -54,171 +33,58 @@ class Outpainting {
   }
 }
 
-class MakeActionPose {
-  constructor(
-    character_image_name,
-    lora_type,
-    prompt_text,
-    pose_type,
-    mask_image_name
-  ) {
-    this.character_image_name = character_image_name;
-    this.lora_type = lora_type;
-    this.prompt_text = prompt_text;
-    this.pose_type = pose_type;
-    this.mask_image_name = mask_image_name;
-  }
-}
-
-class FixHand {
-  constructor(character_image_name, lora_type, prompt_text, pose_type) {
-    this.character_image_name = character_image_name;
-    this.lora_type = lora_type;
-    this.prompt_text = prompt_text;
-    this.pose_type = pose_type;
-  }
-}
-
-class GeneratePoseVideo {
-  constructor(character_image_name, lora_type, prompt_text, pose_type) {
-    this.character_image_name = character_image_name;
-    this.lora_type = lora_type;
-    this.prompt_text = prompt_text;
-    this.pose_type = pose_type;
-  }
-}
-
-class MakeActionPoseNightly {
-  constructor(
-    character_image_name,
-    prompt_text,
-    lora_type,
-    pose_type,
-    mask_image_name
-  ) {
-    this.character_image_name = character_image_name;
-    this.prompt_text = prompt_text;
-    this.lora_type = lora_type;
-    this.pose_type = pose_type;
-    this.mask_image_name = mask_image_name;
-  }
-}
-
-class FixHandNightly {
-  constructor(character_image_name, lora_type, pose_type) {
-    this.character_image_name = character_image_name;
-    this.lora_type = lora_type;
-    this.pose_type = pose_type;
-  }
-}
-
-class GeneratePoseVideoNightly {
-  constructor(character_image_name, pose_type) {
-    this.character_image_name = character_image_name;
-    this.pose_type = pose_type;
-  }
-}
-
-class MakePoseVideo {
-  constructor(character_image_name, lora_type, pose_type) {
-    this.character_image_name = character_image_name;
-    this.lora_type = lora_type;
-    this.pose_type = pose_type;
-  }
-}
-
-class GeneratePoseSpriteSheet {
-  constructor(video_name) {
-    this.video_name = video_name;
-  }
-}
-
-class ImageToPrompt {
-  constructor(image_name) {
-    this.image_name = image_name;
-  }
-}
-
-class Generate3DReqModel {
-  constructor(image_name, type) {
-    this.image_name = image_name;
-    this.type = type;
-  }
-}
-
-class RmbgReqModel {
-  constructor(image_name, type) {
-    this.image_name = image_name;
-    this.type = type;
-  }
-}
-
-class UpscaleReqModel {
-  constructor(image_name, factor) {
-    this.image_name = image_name;
-    this.factor = factor;
-  }
-}
-
-class SkyboxReqModel {
-  constructor(prompt) {
-    this.prompt = prompt;
-  }
-}
 
 // Response Models
 class PromptResponseData {
-  constructor(workflowId, promptId, number) {
-    this.workflowId = workflowId;
-    this.promptId = promptId;
-    this.number = number;
+  constructor(workflow_id) {
+    this.workflow_id = workflow_id;
   }
 }
 
 class StatusTaskResponseData {
-  constructor(id, promptId, complete, executionStart, createAt, updateAt) {
+  constructor(id, complete, execution_start, create_at, update_at) {
     this.id = id;
-    this.promptId = promptId;
     this.complete = complete;
-    this.executionStart = executionStart;
-    this.createAt = createAt;
-    this.updateAt = updateAt;
+    this.execution_start = execution_start;
+    this.create_at = create_at;
+    this.update_at = update_at;
   }
 }
 
 class StatusResponseData {
-  constructor(id, createAt, tasks) {
+  constructor(id, create_at, tasks, percentage) {
     this.id = id;
-    this.createAt = createAt;
+    this.create_at = create_at;
     this.tasks = tasks;
+    this.percentage = percentage;
   }
 }
 
 class HistoryTaskResponseData {
   constructor(
     id,
-    promptId,
     complete,
-    executionStart,
-    outPuts,
-    createAt,
-    updateAt
+    execution_start,
+    out_puts,
+    create_at,
+    update_at
   ) {
     this.id = id;
     this.promptId = promptId;
     this.complete = complete;
-    this.executionStart = executionStart;
-    this.outPuts = outPuts;
-    this.createAt = createAt;
-    this.updateAt = updateAt;
+    this.execution_start = execution_start;
+    this.out_puts = out_puts;
+    this.create_at = create_at;
+    this.update_at = update_at;
   }
 }
 
 class HistoryItemResponseData {
-  constructor(id, createAt, tasks) {
+  constructor(id, create_at, tasks, percentage) {
     this.id = id;
-    this.createAt = createAt;
+    this.create_at = create_at;
     this.tasks = tasks;
+    this.percentage = percentage;
   }
 }
 
@@ -253,10 +119,10 @@ class HistoryResponse {
 }
 
 class S3SignResponseData {
-  constructor(extension, signature, downloadUrl) {
+  constructor(extension, signature, download_url) {
     this.extension = extension;
     this.signature = signature;
-    this.downloadUrl = downloadUrl;
+    this.download_url = download_url;
   }
 }
 
@@ -272,24 +138,8 @@ module.exports = {
   // Request Models
   GetTaskStatus,
   GetHistory,
-  CharacterDesignStep1,
-  CharacterDesignStep2,
-  CharacterDesignStep3,
   Inpainting,
   Outpainting,
-  MakeActionPose,
-  FixHand,
-  GeneratePoseVideo,
-  MakeActionPoseNightly,
-  FixHandNightly,
-  GeneratePoseVideoNightly,
-  MakePoseVideo,
-  GeneratePoseSpriteSheet,
-  ImageToPrompt,
-  Generate3DReqModel,
-  RmbgReqModel,
-  UpscaleReqModel,
-  SkyboxReqModel,
 
   // Response Models
   PromptResponseData,
