@@ -1,7 +1,7 @@
 const path = require("path");
 
 // API Configuration
-const API_HOST = "http://192.168.1.107:8000";//"http://49.233.159.47:9999";
+const API_HOST = "http://49.233.159.47:9999";
 
 // Path Configuration
 const ROOT_PATH = __dirname;

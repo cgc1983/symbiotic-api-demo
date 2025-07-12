@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 public class Config {
     
     // API Configuration
-    public static final String API_HOST = "http://192.168.1.107:8000";//"http://49.233.159.47:9999";
+    public static final String API_HOST = "http://49.233.159.47:9999";
     
     // Secret credentials
     public static final String SECRET_ID = "t1";
