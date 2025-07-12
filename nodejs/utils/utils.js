@@ -224,11 +224,11 @@ async function simpleUploadFileToS3(filePath) {
 
     // 2. Get signature URL and download URL
     const signature = responseData.data.signature;
-    const downloadUrl = responseData.data.downloadUrl;
+    const download_url = responseData.data.download_url;
 
     logger.info(`Obtained signature URL: ${signature}`);
     logger.info(`File extension: ${extension}`);
-    logger.info(`Download URL: ${downloadUrl}`);
+    logger.info(`Download URL: ${download_url}`);
 
     // 3. Get content type
     const contentType = getContentType(extension);
@@ -240,15 +240,15 @@ async function simpleUploadFileToS3(filePath) {
 
     if (success) {
       logger.info("File upload completed!");
-      logger.info(`File download link: ${downloadUrl}`);
+      logger.info(`File download link: ${download_url}`);
 
       // Extract filename from download URL
-      const filename = getFilenameFromUrl(downloadUrl);
+      const filename = getFilenameFromUrl(download_url);
 
       return {
         success: true,
         filename,
-        downloadUrl,
+        download_url,
       };
     } else {
       throw new Error("File upload failed!");
@@ -264,13 +264,13 @@ async function simpleUploadFileToS3(filePath) {
 
 /**
  * Wait for task completion
- * @param {string} promptId - Task ID
+ * @param {string} workflowId - Task ID
  * @param {number} maxRetries - Maximum number of retries
  * @param {number} retryDelay - Delay between retries in milliseconds
  * @returns {Promise<Object>} Task status
  */
 async function waitForTaskCompletion(
-  promptId,
+  workflow_id,
   maxRetries = 30,
   retryDelay = 2000
 ) {
@@ -282,7 +282,7 @@ async function waitForTaskCompletion(
         "GET",
         "/api/v1/get-task-status",
         null,
-        { promptId }
+        { workflow_id }
       );
 
       if (response.status !== 200) {
@@ -330,13 +330,13 @@ async function waitForTaskCompletion(
  * @param {string} toolId - Tool ID
  * @returns {Promise<Object>} Task history
  */
-async function getTaskHistory(toolId) {
+async function getTaskHistory(tool_id) {
   try {
     const response = await makeAuthenticatedRequest(
       "GET",
       "/api/v1/get-task-history",
       null,
-      { tool_id: toolId }
+      { tool_id: tool_id, page: 1, page_size: 64 }
     );
 
     if (response.status !== 200) {

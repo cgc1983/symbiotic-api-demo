@@ -48,12 +48,12 @@ async function main() {
       return;
     }
 
-    const promptId = promptModel.data.promptId;
-    logger.info(`Task submitted with prompt ID: ${promptId}`);
+    const workflow_id = promptModel.data.workflow_id;
+    logger.info(`Task submitted with workflow ID: ${workflow_id}`);
 
     // Wait for task completion
     logger.info("Waiting for task completion...");
-    const taskResult = await waitForTaskCompletion(promptId);
+    const taskResult = await waitForTaskCompletion(workflow_id);
 
     if (!taskResult.success) {
       logger.error("Task failed to complete");
@@ -73,12 +73,12 @@ async function main() {
       for (const task of tasks) {
         logger.info(`Task ID: ${task.id}`);
         logger.info(`Task status: ${task.complete}`);
-        logger.info(`Task start time: ${task.executionStart}`);
-        logger.info(`Task update time: ${task.updateAt}`);
-        logger.info(`Task creation time: ${task.createAt}`);
+        logger.info(`Task start time: ${task.execution_start}`);
+        logger.info(`Task update time: ${task.update_at}`);
+        logger.info(`Task creation time: ${task.create_at}`);
 
-        if (task.outPuts && task.outPuts.length > 0) {
-          for (const output of task.outPuts) {
+        if (task.out_puts && task.out_puts.length > 0) {
+          for (const output of task.out_puts) {
             const downloadUrl = `${config.S3_BUCKET_BASE_URL}${output}`;
             logger.info(`Download link: ${downloadUrl}`);
           }

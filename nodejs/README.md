@@ -16,9 +16,6 @@ nodejs/
 │   ├── demo_upload_file.js          # File upload demo
 │   ├── demo_inpainting.js           # Inpainting demo
 │   ├── demo_outpainting.js          # Outpainting demo
-│   ├── demo_make_action_pose.js     # Make action pose demo
-│   ├── demo_fix_hand.js             # Fix hand demo
-│   └── demo_generate_pose_video.js  # Generate pose video demo
 ├── package.json                     # Node.js dependencies and scripts
 └── README.md                        # This file
 ```
@@ -56,14 +53,6 @@ npm run demo:inpainting
 # Outpainting demo
 npm run demo:outpainting
 
-# Make action pose demo
-npm run demo:action-pose
-
-# Fix hand demo
-npm run demo:fix-hand
-
-# Generate pose video demo
-npm run demo:pose-video
 ```
 
 Or run directly with Node.js:
@@ -78,14 +67,6 @@ node demos/demo_inpainting.js
 # Outpainting demo
 node demos/demo_outpainting.js
 
-# Make action pose demo
-node demos/demo_make_action_pose.js
-
-# Fix hand demo
-node demos/demo_fix_hand.js
-
-# Generate pose video demo
-node demos/demo_generate_pose_video.js
 ```
 
 ## Configuration
@@ -121,9 +102,6 @@ Each demo demonstrates a specific API functionality:
 1. **File Upload** (`demo_upload_file.js`): Upload files to S3 using pre-signed URLs
 2. **Inpainting** (`demo_inpainting.js`): Fill masked areas in images with AI-generated content
 3. **Outpainting** (`demo_outpainting.js`): Extend images beyond their boundaries
-4. **Make Action Pose** (`demo_make_action_pose.js`): Generate character poses with masks
-5. **Fix Hand** (`demo_fix_hand.js`): Improve hand positioning in character images
-6. **Generate Pose Video** (`demo_generate_pose_video.js`): Create videos from character poses
 
 ## API Workflow
 
@@ -176,9 +154,6 @@ The demos interact with these API endpoints:
 - `GET /api/v1/image-signature`: Get S3 pre-signed upload URL
 - `POST /api/v1/inpainting`: Execute inpainting
 - `POST /api/v1/outpainting`: Execute outpainting
-- `POST /api/v1/make-action-pose`: Generate action poses
-- `POST /api/v1/fix-hand`: Fix hand positioning
-- `POST /api/v1/generate-pose-video`: Generate pose videos
 - `GET /api/v1/get-task-status`: Check task completion status
 - `GET /api/v1/get-task-history`: Retrieve task history
 
