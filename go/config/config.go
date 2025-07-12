@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	APIHost = "http://49.233.159.47:9999"
+	APIHost = "http://127.0.0.1:8000"
 	
 	// Secret credentials
 	SecretID  = "t1"

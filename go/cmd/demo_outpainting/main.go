@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"path/filepath"
+	"strconv"
 	"time"
 
 	"symbiotic-api-demo/config"
@@ -47,13 +48,13 @@ func main() {
 		log.Fatalf("Outpainting execution failed, error message: %s", promptResponse.Msg)
 	}
 	
-	promptID := promptResponse.Data.PromptID
+	workflowId := promptResponse.Data.WorkflowID
 	
 	// Check status
-	getStatusReq := models.GetTaskStatus{PromptID: promptID}
-	for {
+	getStatusReq := models.GetTaskStatus{WorkflowID: workflowId}
+	for {	
 		statusResponse, err := utils.MakeAuthenticatedRequest("GET", "/api/v1/get-task-status", nil, map[string]string{
-			"promptId": getStatusReq.PromptID,
+			"workflow_id": strconv.Itoa(getStatusReq.WorkflowID),
 		})
 		if err != nil {
 			log.Fatalf("Error checking status: %v", err)
@@ -77,6 +78,8 @@ func main() {
 	getHistoryReq := models.GetHistory{ToolID: "4"}
 	historyResponse, err := utils.MakeAuthenticatedRequest("GET", "/api/v1/get-task-history", nil, map[string]string{
 		"tool_id": getHistoryReq.ToolID,
+		"page": "1",
+		"page_size": "10",
 	})
 	if err != nil {
 		log.Fatalf("Error getting history: %v", err)

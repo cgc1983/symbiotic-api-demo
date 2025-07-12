@@ -2,7 +2,7 @@ package models
 
 // Request Models
 type GetTaskStatus struct {
-	PromptID string `json:"promptId" description:"Task ID"`
+	WorkflowID int `json:"workflow_id" description:"Task ID"`
 }
 
 type GetHistory struct {
@@ -118,39 +118,38 @@ type SkyboxReqModel struct {
 
 // Response Data Models
 type PromptResponseData struct {
-	WorkflowID int    `json:"workflowId" description:"WorkFlow ID"`
-	PromptID   string `json:"promptId" description:"Task ID"`
+	WorkflowID int    `json:"workflow_id" description:"WorkFlow ID"`
 	Number     int    `json:"number" description:"No."`
 }
 
 type StatusTaskResponseData struct {
 	ID             int    `json:"id" description:"ID"`
-	PromptID       string `json:"promptId" description:"Task ID"`
+	PromptID       string `json:"prompt_id" description:"Task ID"`
 	Complete       int    `json:"complete" description:"Completed status; 0: In Queue; 1: Completed; 2: Processing; 3: Error Occurred;"`
-	ExecutionStart int    `json:"executionStart" description:"Execution start time"`
-	CreateAt       string `json:"createAt" description:"Create Time"`
-	UpdateAt       string `json:"updateAt" description:"Update Time"`
+	ExecutionStart int    `json:"execution_start" description:"Execution start time"`
+	CreateAt       string `json:"create_at" description:"Create Time"`
+	UpdateAt       string `json:"update_at" description:"Update Time"`
 }
 
 type StatusResponseData struct {
 	ID       int                      `json:"id" description:"ID"`
-	CreateAt string                   `json:"createAt" description:"Create Time"`
+	CreateAt string                   `json:"create_at" description:"Create Time"`
 	Tasks    []StatusTaskResponseData `json:"tasks" description:"Task List"`
 }
 
 type HistoryTaskResponseData struct {
 	ID             int      `json:"id" description:"ID"`
-	PromptID       string   `json:"promptId" description:"Task ID"`
+	PromptID       string   `json:"prompt_id" description:"Task ID"`
 	Complete       int      `json:"complete" description:"Completed status; 0: In Queue; 1: Completed; 2: Processing; 3: Error Occurred;"`
-	ExecutionStart int      `json:"executionStart" description:"Execution start time"`
-	OutPuts        []string `json:"outPuts" description:"Outputs; include Image, Video, Model etc."`
-	CreateAt       string   `json:"createAt" description:"Create Time"`
-	UpdateAt       string   `json:"updateAt" description:"Update Time"`
+	ExecutionStart int      `json:"execution_start" description:"Execution start time"`
+	OutPuts        []string `json:"out_puts" description:"Outputs; include Image, Video, Model etc."`
+	CreateAt       string   `json:"create_at" description:"Create Time"`
+	UpdateAt       string   `json:"update_at" description:"Update Time"`
 }
 
 type HistoryItemResponseData struct {
 	ID       int                        `json:"id" description:"ID"`
-	CreateAt string                     `json:"createAt" description:"Create Time"`
+	CreateAt string                     `json:"create_at" description:"Create Time"`
 	Tasks    []HistoryTaskResponseData  `json:"tasks" description:"Task List"`
 }
 
@@ -161,7 +160,7 @@ type HistoryResponseData struct {
 type S3SignResponseData struct {
 	Extension   string `json:"extension" description:"File extension"`
 	Signature   string `json:"signature" description:"S3 signature URL"`
-	DownloadURL string `json:"downloadUrl" description:"Download URL"`
+	DownloadURL string `json:"download_url" description:"Download URL"`
 }
 
 // Response Models
