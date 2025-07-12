@@ -9,75 +9,26 @@ public class Models {
     
     // Request Models
     public static class GetTaskStatus {
-        @JsonProperty("promptId")
-        public String promptId;
+        @JsonProperty("workflow_id")
+        public String workflowId;
         
-        public GetTaskStatus(String promptId) {
-            this.promptId = promptId;
+        public GetTaskStatus(String workflowId) {
+            this.workflowId = workflowId;
         }
     }
     
     public static class GetHistory {
         @JsonProperty("tool_id")
         public String toolId;
+
+        @JsonProperty("page")
+        public String page;
+
+        @JsonProperty("page_size")
+        public String pageSize;
         
         public GetHistory(String toolId) {
             this.toolId = toolId;
-        }
-    }
-    
-    public static class CharacterDesignStep1 {
-        @JsonProperty("character_name")
-        public String characterName;
-        
-        @JsonProperty("character_detail")
-        public String characterDetail;
-        
-        @JsonProperty("lora_type")
-        public String loraType;
-        
-        public CharacterDesignStep1(String characterName, String characterDetail, String loraType) {
-            this.characterName = characterName;
-            this.characterDetail = characterDetail;
-            this.loraType = loraType;
-        }
-    }
-    
-    public static class CharacterDesignStep2 {
-        @JsonProperty("prompt_text")
-        public String promptText;
-        
-        @JsonProperty("character_image_name")
-        public String characterImageName;
-        
-        @JsonProperty("lora_type")
-        public String loraType;
-        
-        public CharacterDesignStep2(String promptText, String characterImageName, String loraType) {
-            this.promptText = promptText;
-            this.characterImageName = characterImageName;
-            this.loraType = loraType;
-        }
-    }
-    
-    public static class CharacterDesignStep3 {
-        @JsonProperty("prompt_text")
-        public String promptText;
-        
-        @JsonProperty("character_image_name")
-        public String characterImageName;
-        
-        @JsonProperty("video_name")
-        public String videoName;
-        
-        @JsonProperty("lora_type")
-        public String loraType;
-        
-        public CharacterDesignStep3(String promptText, String characterImageName, String videoName, String loraType) {
-            this.promptText = promptText;
-            this.characterImageName = characterImageName;
-            this.videoName = videoName;
-            this.loraType = loraType;
         }
     }
     
@@ -122,241 +73,28 @@ public class Models {
             this.bottom = bottom;
         }
     }
-    
-    public static class MakeActionPose {
-        @JsonProperty("character_image_name")
-        public String characterImageName;
-        
-        @JsonProperty("lora_type")
-        public String loraType;
-        
-        @JsonProperty("prompt_text")
-        public String promptText;
-        
-        @JsonProperty("pose_type")
-        public String poseType;
-        
-        @JsonProperty("mask_image_name")
-        public String maskImageName;
-        
-        public MakeActionPose(String characterImageName, String loraType, String promptText, String poseType, String maskImageName) {
-            this.characterImageName = characterImageName;
-            this.loraType = loraType;
-            this.promptText = promptText;
-            this.poseType = poseType;
-            this.maskImageName = maskImageName;
-        }
-    }
-    
-    public static class FixHand {
-        @JsonProperty("character_image_name")
-        public String characterImageName;
-        
-        @JsonProperty("lora_type")
-        public String loraType;
-        
-        @JsonProperty("prompt_text")
-        public String promptText;
-        
-        @JsonProperty("pose_type")
-        public String poseType;
-        
-        public FixHand(String characterImageName, String loraType, String promptText, String poseType) {
-            this.characterImageName = characterImageName;
-            this.loraType = loraType;
-            this.promptText = promptText;
-            this.poseType = poseType;
-        }
-    }
-    
-    public static class GeneratePoseVideo {
-        @JsonProperty("character_image_name")
-        public String characterImageName;
-        
-        @JsonProperty("lora_type")
-        public String loraType;
-        
-        @JsonProperty("prompt_text")
-        public String promptText;
-        
-        @JsonProperty("pose_type")
-        public String poseType;
-        
-        public GeneratePoseVideo(String characterImageName, String loraType, String promptText, String poseType) {
-            this.characterImageName = characterImageName;
-            this.loraType = loraType;
-            this.promptText = promptText;
-            this.poseType = poseType;
-        }
-    }
-    
-    public static class MakeActionPoseNightly {
-        @JsonProperty("character_image_name")
-        public String characterImageName;
-        
-        @JsonProperty("prompt_text")
-        public String promptText;
-        
-        @JsonProperty("lora_type")
-        public String loraType;
-        
-        @JsonProperty("pose_type")
-        public String poseType;
-        
-        @JsonProperty("mask_image_name")
-        public String maskImageName;
-        
-        public MakeActionPoseNightly(String characterImageName, String promptText, String loraType, String poseType, String maskImageName) {
-            this.characterImageName = characterImageName;
-            this.promptText = promptText;
-            this.loraType = loraType;
-            this.poseType = poseType;
-            this.maskImageName = maskImageName;
-        }
-    }
-    
-    public static class FixHandNightly {
-        @JsonProperty("character_image_name")
-        public String characterImageName;
-        
-        @JsonProperty("lora_type")
-        public String loraType;
-        
-        @JsonProperty("pose_type")
-        public String poseType;
-        
-        public FixHandNightly(String characterImageName, String loraType, String poseType) {
-            this.characterImageName = characterImageName;
-            this.loraType = loraType;
-            this.poseType = poseType;
-        }
-    }
-    
-    public static class GeneratePoseVideoNightly {
-        @JsonProperty("character_image_name")
-        public String characterImageName;
-        
-        @JsonProperty("pose_type")
-        public String poseType;
-        
-        public GeneratePoseVideoNightly(String characterImageName, String poseType) {
-            this.characterImageName = characterImageName;
-            this.poseType = poseType;
-        }
-    }
-    
-    public static class MakePoseVideo {
-        @JsonProperty("character_image_name")
-        public String characterImageName;
-        
-        @JsonProperty("lora_type")
-        public String loraType;
-        
-        @JsonProperty("pose_type")
-        public String poseType;
-        
-        public MakePoseVideo(String characterImageName, String loraType, String poseType) {
-            this.characterImageName = characterImageName;
-            this.loraType = loraType;
-            this.poseType = poseType;
-        }
-    }
-    
-    public static class GeneratePoseSpriteSheet {
-        @JsonProperty("video_name")
-        public String videoName;
-        
-        public GeneratePoseSpriteSheet(String videoName) {
-            this.videoName = videoName;
-        }
-    }
-    
-    public static class ImageToPrompt {
-        @JsonProperty("image_name")
-        public String imageName;
-        
-        public ImageToPrompt(String imageName) {
-            this.imageName = imageName;
-        }
-    }
-    
-    public static class Generate3DReqModel {
-        @JsonProperty("image_name")
-        public String imageName;
-        
-        @JsonProperty("type")
-        public String type;
-        
-        public Generate3DReqModel(String imageName, String type) {
-            this.imageName = imageName;
-            this.type = type;
-        }
-    }
-    
-    public static class RmbgReqModel {
-        @JsonProperty("image_name")
-        public String imageName;
-        
-        @JsonProperty("type")
-        public String type;
-        
-        public RmbgReqModel(String imageName, String type) {
-            this.imageName = imageName;
-            this.type = type;
-        }
-    }
-    
-    public static class UpscaleReqModel {
-        @JsonProperty("image_name")
-        public String imageName;
-        
-        @JsonProperty("factor")
-        public String factor;
-        
-        public UpscaleReqModel(String imageName, String factor) {
-            this.imageName = imageName;
-            this.factor = factor;
-        }
-    }
-    
-    public static class SkyboxReqModel {
-        @JsonProperty("prompt")
-        public String prompt;
-        
-        public SkyboxReqModel(String prompt) {
-            this.prompt = prompt;
-        }
-    }
+
     
     // Response Data Models
     public static class PromptResponseData {
-        @JsonProperty("workflowId")
+        @JsonProperty("workflow_id")
         public int workflowId;
-        
-        @JsonProperty("promptId")
-        public String promptId;
-        
-        @JsonProperty("number")
-        public int number;
     }
     
     public static class StatusTaskResponseData {
         @JsonProperty("id")
         public int id;
         
-        @JsonProperty("promptId")
-        public String promptId;
-        
         @JsonProperty("complete")
         public int complete;
         
-        @JsonProperty("executionStart")
+        @JsonProperty("execution_start")
         public long executionStart;
         
-        @JsonProperty("createAt")
+        @JsonProperty("create_at")
         public String createAt;
         
-        @JsonProperty("updateAt")
+        @JsonProperty("update_at")
         public String updateAt;
     }
     
@@ -364,33 +102,33 @@ public class Models {
         @JsonProperty("id")
         public int id;
         
-        @JsonProperty("createAt")
+        @JsonProperty("create_at")
         public String createAt;
         
         @JsonProperty("tasks")
         public StatusTaskResponseData[] tasks;
+
+        @JsonProperty("percentage")
+        public int percentage;
     }
     
     public static class HistoryTaskResponseData {
         @JsonProperty("id")
         public int id;
         
-        @JsonProperty("promptId")
-        public String promptId;
-        
         @JsonProperty("complete")
         public int complete;
         
-        @JsonProperty("executionStart")
+        @JsonProperty("execution_start")
         public long executionStart;
         
-        @JsonProperty("outPuts")
+        @JsonProperty("out_puts")
         public String[] outPuts;
         
-        @JsonProperty("createAt")
+        @JsonProperty("create_at")
         public String createAt;
         
-        @JsonProperty("updateAt")
+        @JsonProperty("update_at")
         public String updateAt;
     }
     
@@ -398,11 +136,14 @@ public class Models {
         @JsonProperty("id")
         public int id;
         
-        @JsonProperty("createAt")
+        @JsonProperty("create_at")
         public String createAt;
         
         @JsonProperty("tasks")
         public HistoryTaskResponseData[] tasks;
+
+        @JsonProperty("percentage")
+        public int percentage;
     }
     
     public static class HistoryResponseData {
@@ -417,7 +158,7 @@ public class Models {
         @JsonProperty("signature")
         public String signature;
         
-        @JsonProperty("downloadUrl")
+        @JsonProperty("download_url")
         public String downloadUrl;
     }
     

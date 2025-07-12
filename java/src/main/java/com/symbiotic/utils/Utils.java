@@ -307,9 +307,9 @@ public class Utils {
     /**
      * Check task status
      */
-    public static Models.StatusResponse checkTaskStatus(String promptId) throws Exception {
+    public static Models.StatusResponse checkTaskStatus(int workflowId) throws Exception {
         Map<String, String> params = new HashMap<>();
-        params.put("promptId", promptId);
+        params.put("workflow_id", String.valueOf(workflowId));
         
         HttpResponse response = makeAuthenticatedRequest("GET", "/api/v1/get-task-status", null, params);
         
@@ -330,6 +330,8 @@ public class Utils {
     public static Models.HistoryResponse getTaskHistory(String toolId) throws Exception {
         Map<String, String> params = new HashMap<>();
         params.put("tool_id", toolId);
+        params.put("page", "1");
+        params.put("page_size", "64");
         
         HttpResponse response = makeAuthenticatedRequest("GET", "/api/v1/get-task-history", null, params);
         
@@ -347,9 +349,9 @@ public class Utils {
     /**
      * Wait for task completion
      */
-    public static Models.StatusTaskResponseData waitForTaskCompletion(String promptId, int maxRetries, long retryIntervalMs) throws Exception {
+    public static Models.StatusTaskResponseData waitForTaskCompletion(int workflowId, int maxRetries, long retryIntervalMs) throws Exception {
         for (int i = 0; i < maxRetries; i++) {
-            Models.StatusResponse statusResponse = checkTaskStatus(promptId);
+            Models.StatusResponse statusResponse = checkTaskStatus(workflowId);
             
             if (statusResponse.code != 0) {
                 logger.error("API returned error: {}", statusResponse.msg);
@@ -358,7 +360,7 @@ public class Utils {
             
             if (statusResponse.data != null && statusResponse.data.tasks != null) {
                 for (Models.StatusTaskResponseData task : statusResponse.data.tasks) {
-                    if (promptId.equals(task.promptId)) {
+                    if (workflowId == task.id) {
                         if (task.complete == 1) {
                             logger.info("Task completed successfully");
                             return task;

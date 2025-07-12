@@ -9,9 +9,6 @@ if "%1"=="" (
     echo   upload       - Run file upload demo
     echo   inpainting   - Run inpainting demo
     echo   outpainting  - Run outpainting demo
-    echo   action-pose  - Run make action pose demo
-    echo   fix-hand     - Run fix hand demo
-    echo   pose-video   - Run generate pose video demo
     echo   build        - Build the project
     echo   clean        - Clean the project
     exit /b 1
@@ -44,24 +41,6 @@ if "%1"=="inpainting" (
 if "%1"=="outpainting" (
     echo Running outpainting demo...
     mvn exec:java -Dexec.mainClass="com.symbiotic.demo.DemoOutpainting"
-    goto :eof
-)
-
-if "%1"=="action-pose" (
-    echo Running make action pose demo...
-    mvn exec:java -Dexec.mainClass="com.symbiotic.demo.DemoMakeActionPose"
-    goto :eof
-)
-
-if "%1"=="fix-hand" (
-    echo Running fix hand demo...
-    mvn exec:java -Dexec.mainClass="com.symbiotic.demo.DemoFixHand"
-    goto :eof
-)
-
-if "%1"=="pose-video" (
-    echo Running generate pose video demo...
-    mvn exec:java -Dexec.mainClass="com.symbiotic.demo.DemoGeneratePoseVideo"
     goto :eof
 )
 

@@ -21,9 +21,6 @@ java/
 │       │               ├── DemoUploadFile.java        # File upload demo
 │       │               ├── DemoInpainting.java        # Inpainting demo
 │       │               ├── DemoOutpainting.java       # Outpainting demo
-│       │               ├── DemoMakeActionPose.java    # Make action pose demo
-│       │               ├── DemoFixHand.java           # Fix hand demo
-│       │               └── DemoGeneratePoseVideo.java # Generate pose video demo
 │       └── resources/
 │           └── logback.xml                    # Logging configuration
 ├── pom.xml                                   # Maven project configuration
@@ -63,14 +60,6 @@ mvn exec:java -Dexec.mainClass="com.symbiotic.demo.DemoInpainting"
 # Outpainting demo
 mvn exec:java -Dexec.mainClass="com.symbiotic.demo.DemoOutpainting"
 
-# Make action pose demo
-mvn exec:java -Dexec.mainClass="com.symbiotic.demo.DemoMakeActionPose"
-
-# Fix hand demo
-mvn exec:java -Dexec.mainClass="com.symbiotic.demo.DemoFixHand"
-
-# Generate pose video demo
-mvn exec:java -Dexec.mainClass="com.symbiotic.demo.DemoGeneratePoseVideo"
 ```
 
 Alternatively, you can build a fat JAR and run it directly:
@@ -83,9 +72,7 @@ mvn clean package
 java -cp target/symbiotic-api-demo-1.0.0.jar com.symbiotic.demo.DemoUploadFile
 java -cp target/symbiotic-api-demo-1.0.0.jar com.symbiotic.demo.DemoInpainting
 java -cp target/symbiotic-api-demo-1.0.0.jar com.symbiotic.demo.DemoOutpainting
-java -cp target/symbiotic-api-demo-1.0.0.jar com.symbiotic.demo.DemoMakeActionPose
-java -cp target/symbiotic-api-demo-1.0.0.jar com.symbiotic.demo.DemoFixHand
-java -cp target/symbiotic-api-demo-1.0.0.jar com.symbiotic.demo.DemoGeneratePoseVideo
+
 ```
 
 ## Configuration
@@ -120,9 +107,6 @@ Each demo demonstrates a specific API functionality:
 1. **File Upload** (`DemoUploadFile.java`): Upload files to S3 using pre-signed URLs
 2. **Inpainting** (`DemoInpainting.java`): Fill masked areas in images with AI-generated content
 3. **Outpainting** (`DemoOutpainting.java`): Extend images beyond their boundaries
-4. **Make Action Pose** (`DemoMakeActionPose.java`): Generate character poses with masks
-5. **Fix Hand** (`DemoFixHand.java`): Improve hand positioning in character images
-6. **Generate Pose Video** (`DemoGeneratePoseVideo.java`): Create videos from character poses
 
 ## API Workflow
 
@@ -175,9 +159,6 @@ The demos interact with these API endpoints:
 - `GET /api/v1/image-signature`: Get S3 pre-signed upload URL
 - `POST /api/v1/inpainting`: Execute inpainting
 - `POST /api/v1/outpainting`: Execute outpainting
-- `POST /api/v1/make-action-pose`: Generate action poses
-- `POST /api/v1/fix-hand`: Fix hand positioning
-- `POST /api/v1/generate-pose-video`: Generate pose videos
 - `GET /api/v1/get-task-status`: Check task completion status
 - `GET /api/v1/get-task-history`: Retrieve task history
 

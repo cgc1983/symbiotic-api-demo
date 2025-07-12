@@ -56,12 +56,12 @@ public class DemoInpainting {
                 throw new RuntimeException("API returned error: " + promptResponse.msg);
             }
             
-            String promptId = promptResponse.data.promptId;
-            logger.info("Inpainting task submitted successfully, prompt ID: {}", promptId);
+            int workflowId = promptResponse.data.workflowId;
+            logger.info("Inpainting task submitted successfully, workflow ID: {}", workflowId);
             
             // Wait for task completion
             logger.info("Waiting for task completion...");
-            Models.StatusTaskResponseData completedTask = Utils.waitForTaskCompletion(promptId, 130, 5000);
+            Models.StatusTaskResponseData completedTask = Utils.waitForTaskCompletion(workflowId, 130, 5000);
 
             Models.HistoryResponse history_model = Utils.getTaskHistory("4");
 
@@ -85,7 +85,7 @@ public class DemoInpainting {
             }
 
             logger.info("Inpainting task completed successfully!");
-            logger.info("Task ID: {}", completedTask.promptId);
+            logger.info("Task ID: {}", completedTask.id);
             logger.info("Execution time: {} ms", completedTask.executionStart);
             
         } catch (Exception e) {
