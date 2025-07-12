@@ -222,7 +222,7 @@ def simple_upload_file_to_s3(file_path: str):
         # 4. Upload file to S3
         success = upload_file_to_s3(signature, file_data, content_type)
         if success:
-            return get_filename_from_url(response_model.data.downloadUrl)
+            return get_filename_from_url(response_model.data.download_url)
         else:
             return None
 
