@@ -10,14 +10,14 @@ import java.nio.file.Paths;
 public class Config {
     
     // API Configuration
-    public static final String API_HOST = "http://49.233.159.47:9999";
+    public static final String API_HOST = "https://api.symbiotic-labs.xyz/";
     
     // Secret credentials
     public static final String SECRET_ID = "t1";
     public static final String SECRET_KEY = "test_secret_key_001";
     
     // S3 bucket base URL
-    public static final String S3_BUCKET_BASE_URL = "https://comfyprod.s3.ap-northeast-1.amazonaws.com/temp/";
+    public static final String S3_BUCKET_BASE_URL = "https://comfyprod-1365981877.cos.ap-singapore.myqcloud.com/";
     
     // Paths
     public static final String ROOT_PATH;
