@@ -17,7 +17,7 @@ public class Config {
     public static final String SECRET_KEY = "test_secret_key_001";
     
     // S3 bucket base URL
-    public static final String S3_BUCKET_BASE_URL = "https://comfyprod-1365981877.cos.ap-singapore.myqcloud.com/";
+    public static final String S3_BUCKET_BASE_URL = "https://comfy01-1365981877.cos.ap-singapore.myqcloud.com/temp/";
     
     // Paths
     public static final String ROOT_PATH;
