@@ -1,7 +1,7 @@
 const path = require("path");
 
 // API Configuration
-const API_HOST = "http://49.233.159.47:9999";
+const API_HOST = "https://api.symbiotic-labs.xyz/";
 
 // Path Configuration
 const ROOT_PATH = __dirname;
@@ -11,7 +11,7 @@ const VIDEO_PATH = path.join(PARENT_PATH, "videos");
 
 // S3 Configuration
 const S3_BUCKET_BASE_URL =
-  "https://comfyprod.s3.ap-northeast-1.amazonaws.com/temp/";
+  "https://comfyprod-1365981877.cos.ap-singapore.myqcloud.com/";
 
 // Authentication Credentials
 const SECRET_ID = "t1";

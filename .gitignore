@@ -5,3 +5,4 @@ folder-alias.json
 .vscode
 node_modules
 *.log
+target
