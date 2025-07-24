@@ -18,13 +18,7 @@ go/
 │   ├── demo_inpainting/
 │   │   └── main.go        # Inpainting demo
 │   ├── demo_outpainting/
-│   │   └── main.go        # Outpainting demo
-│   ├── demo_make_action_pose/
-│   │   └── main.go        # Make action pose demo
-│   ├── demo_fix_hand/
-│   │   └── main.go        # Fix hand demo
-│   └── demo_generate_pose_video/
-│       └── main.go        # Generate pose video demo
+│       └── main.go        # Outpainting demo
 ├── go.mod                 # Go module file
 └── README.md              # This file
 ```
@@ -61,14 +55,6 @@ go run cmd/demo_inpainting/main.go
 # Outpainting demo
 go run cmd/demo_outpainting/main.go
 
-# Make action pose demo
-go run cmd/demo_make_action_pose/main.go
-
-# Fix hand demo
-go run cmd/demo_fix_hand/main.go
-
-# Generate pose video demo
-go run cmd/demo_generate_pose_video/main.go
 ```
 
 ## Configuration
@@ -101,9 +87,6 @@ Each demo demonstrates a specific API functionality:
 1. **File Upload**: Upload files to S3 using pre-signed URLs
 2. **Inpainting**: Fill masked areas in images
 3. **Outpainting**: Extend images beyond their boundaries
-4. **Make Action Pose**: Generate character poses with masks
-5. **Fix Hand**: Improve hand positioning in character images
-6. **Generate Pose Video**: Create videos from character poses
 
 ## API Workflow
 

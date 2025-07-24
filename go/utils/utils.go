@@ -59,7 +59,7 @@ func GetAuthHeaders(apiKey, secretKey, body string) map[string]string {
 
 // MakeAuthenticatedRequest makes an authenticated HTTP request
 func MakeAuthenticatedRequest(method, endpoint string, data interface{}, params map[string]string) (*http.Response, error) {
-	url := fmt.Sprintf("%s%s", config.APIHost, endpoint)
+	requestURL := fmt.Sprintf("%s%s", config.APIHost, endpoint)
 	
 	var req *http.Request
 	var err error
@@ -68,22 +68,24 @@ func MakeAuthenticatedRequest(method, endpoint string, data interface{}, params 
 		// Build query string for GET requests
 		queryString := ""
 		if params != nil {
-			var queryParams []string
+			// Create URL with query parameters to get the properly encoded query string
+			baseURL, _ := url.Parse(requestURL)
+			q := baseURL.Query()
 			for k, v := range params {
-				queryParams = append(queryParams, fmt.Sprintf("%s=%s", k, v))
+				q.Add(k, v)
 			}
-			queryString = strings.Join(queryParams, "&")
+			queryString = q.Encode()
 		}
 		
 		headers := GetAuthHeaders(config.SecretID, config.SecretKey, queryString)
 		headers["Content-Type"] = "application/x-www-form-urlencoded"
 		
-		req, err = http.NewRequest("GET", url, nil)
+		req, err = http.NewRequest("GET", requestURL, nil)
 		if err != nil {
 			return nil, err
 		}
 		
-		// Add query parameters
+		// Add query parameters using the same encoding method
 		if params != nil {
 			q := req.URL.Query()
 			for k, v := range params {
@@ -111,7 +113,7 @@ func MakeAuthenticatedRequest(method, endpoint string, data interface{}, params 
 		headers := GetAuthHeaders(config.SecretID, config.SecretKey, bodyStr)
 		headers["Content-Type"] = "application/json"
 		
-		req, err = http.NewRequest("POST", url, bytes.NewBuffer(body))
+		req, err = http.NewRequest("POST", requestURL, bytes.NewBuffer(body))
 		if err != nil {
 			return nil, err
 		}
