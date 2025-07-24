@@ -6,14 +6,14 @@ import (
 )
 
 const (
-	APIHost = "https://api.symbiotic-labs.xyz/"
+	APIHost = "https://api.symbiotic-labs.xyz"
 
 	// Secret credentials
 	SecretID  = "t1"
 	SecretKey = "test_secret_key_001"
 
 	// S3 bucket base URL
-	S3BucketBaseURL = "https://comfyprod-1365981877.cos.ap-singapore.myqcloud.com/"
+	S3BucketBaseURL = "https://comfyprod-1365981877.cos.ap-singapore.myqcloud.com/temp/"
 )
 
 var (
